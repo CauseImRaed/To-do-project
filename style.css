@@ -1,0 +1,217 @@
+/* UI/UX CSS متقدم */
+:root {
+  --light-bg: linear-gradient(135deg, #e0f2f1, #ffffff);
+  --dark-bg: linear-gradient(135deg, #263238, #37474f);
+
+  --text-color: #333;
+  --accent: #00bcd4;
+  --accent-dark: #008ba3;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-dark: rgba(33, 33, 33, 0.85);
+  --border-radius: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--light-bg);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: all 0.4s ease;
+  direction: rtl;
+}
+
+body.dark {
+  background: var(--dark-bg);
+  color: #eee;
+}
+
+.app-container {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  padding: 2rem;
+  width: 95%;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+body.dark .app-container {
+  background: var(--card-dark);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.3s;
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+}
+
+.input-section {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#addTaskBtn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  margin-right: 0.5rem;
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#addTaskBtn:hover {
+  background-color: var(--accent-dark);
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.filter {
+  flex: 1;
+  margin: 0 0.2rem;
+  border: none;
+  background: #e0e0e0;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.filter.active, .filter:hover {
+  background: var(--accent);
+  color: white;
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+body.dark .task {
+  background: #424242;
+  color: white;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task button {
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.actions button:hover {
+  color: var(--accent);
+}
+
+#clearAll {
+  background-color: crimson;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#clearAll:hover {
+  background-color: darkred;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.footer-text {
+  position: fixed;       /* تثبيت العنصر */
+  bottom: 10px;          /* المسافة من الأسفل */
+  left: 50%;             /* تحريك إلى المنتصف أفقياً */
+  transform: translateX(-50%);  /* تعويض الـ 50% لجعله مركز تماماً */
+  text-align: center;
+  font-weight: normal;
+  color: #666;           /* لون خفيف */
+  font-size: 1rem;
+  user-select: none;     /* لمنع التحديد إذا بدك */
+}
